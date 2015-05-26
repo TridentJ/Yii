@@ -9,7 +9,7 @@ class TLoginForm extends Model
 {
 	public $username;
 	public $password;
-	public $captcha;
+	public $verifycode;
 	
 	public function rules()
 	{
@@ -17,9 +17,14 @@ class TLoginForm extends Model
 //			[['username','password','captcha'],'required'],
 			['username','required','message'=> 'Please input username'],
 			['password','required','message'=>'Please input password'],
-			['captcha','required','message'=>'please input captcha'],
-			['captcha','captcha'],
+			['verifycode','required','message'=>'please input captcha'],
+			['verifycode','captcha','message'=>'verifyCode is wrong'],
 		];
+	}
+	
+	public function attributeLabels()
+	{
+		return ['verifycode'=>'verification code'];
 	}
 	
 }
